@@ -78,7 +78,7 @@ def crearSubCarpeta(tipo, archivo):
 				os.mkdir(moverA)
 	shutil.move(moverDe+archivo, moverA+archivo)
 
-def recorrerArchivo(formateado, archivo):
+def recorrerArchivo(formateado, archivo): 
 	match formateado[1].lower():
 		case '.doc' | '.docx':
 			tipo= 'documento'
