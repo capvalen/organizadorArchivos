@@ -1,11 +1,21 @@
-import os
+#versión 1.0
+import sys, os
 import pathlib
 import shutil
 os.system('cls')
 
 #obtenemos la ruta actual
-ruta = "D:\Archivos\Programado\organizadorArchivos/archivos";
-#str(pathlib.Path(__file__).parent.absolute()) + '/archivos/'
+if getattr(sys, 'frozen', False):
+	ruta = os.path.dirname(sys.executable)
+else:
+	ruta = str(pathlib.Path(__file__).parent.absolute())
+	#str(pathlib.Path(__file__).parent.absolute()) + '/archivos/'
+
+#print ('nueva ruta ',ruta)
+#file = open(ruta+"/logOrdenar.txt", "w")
+#file.write(ruta)
+#file.close()
+
 
 def crearSubCarpeta(tipo, archivo):
 	moverDe = ruta+"/"
@@ -13,67 +23,67 @@ def crearSubCarpeta(tipo, archivo):
 	#print('mover de ',moverDe+archivo )
 	#print('mover A ', moverA+archivo)
 	match tipo:
-		case 'documento':
+		case 'Words':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'excel':
+		case 'Excels':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'powerpoint':
+		case 'Power Points':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'pdf':
+		case 'Pdfs':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
 		case 'Imágenes o fotos':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'photoshop':
+		case 'Photoshop':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'vector':
+		case 'Vectores':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'icono':
+		case 'Íconos':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'shockwave':
+		case 'Shockwave':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'audio':
+		case 'Audios':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'video':
+		case 'Videos':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'ejecutable':
+		case 'Ejecutables':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'iso':
+		case 'Imágenes ISO':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'comprimido':
+		case 'Comprimidos':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'texto':
+		case 'Textos planos':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'basededatos':
+		case 'Base de datos':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'web':
+		case 'Programación Web':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'fuente':
+		case 'Fuentes':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'autocad':
+		case 'Autocads':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case '3d':
+		case 'Modelado 3ds':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
-		case 'otros':
+		case 'Otros':
 			if not os.path.exists(moverA):
 				os.mkdir(moverA)
 	shutil.move(moverDe+archivo, moverA+archivo)
@@ -81,72 +91,70 @@ def crearSubCarpeta(tipo, archivo):
 def recorrerArchivo(formateado, archivo): 
 	match formateado[1].lower():
 		case '.doc' | '.docx':
-			tipo= 'documento'
+			tipo= 'Words'
 			pass
 		case '.xlsx' | '.xls' | '.csv':
-			tipo= 'excel'
+			tipo= 'Excels'
 			pass
 		case '.ppt' | '.pptx':
-			tipo= 'powerpoint'
+			tipo= 'Power Points'
 			pass
 		case '.pdf':
-			tipo= 'pdf'
+			tipo= 'Pdfs'
 			pass
-		case '.jpg' | '.jpeg' | '.png' | '.gif' | 'xcf' | '.raw' | '.bmp' | '.webp':
+		case '.jpg' | '.jpeg' | '.png' | '.gif' | 'xcf' | '.raw' | '.bmp' | '.Programación Webp':
 			tipo= 'Imágenes o fotos'
 			pass
 		case '.psd':
-			tipo= 'photoshop'
+			tipo= 'Photoshop'
 			pass
 		case '.svg' | '.cdr' | '.ai':
-			tipo= 'vector'
+			tipo= 'Vectores'
 			pass
 		case '.ico':
-			tipo= 'icono'
+			tipo= 'Íconos'
 			pass
-		case '.swf': #shockwave
-			tipo= 'shockwave'
+		case '.swf': #Shockwave
+			tipo= 'Shockwave'
 			pass
 		case '.mp3' | '.wav' | '.aac' | '.ogg' | '.midi':
-			tipo= 'audio'
+			tipo= 'Audios'
 			pass
 		case '.mkv' | '.mp4' | '.avi' | '.mov' | '.rm':
-			tipo= 'video'
+			tipo= 'Videos'
 			pass
 		case '.exe':
-			tipo= 'ejecutable'
+			tipo= 'Ejecutables'
 			pass
-		case '.iso':
-			tipo= 'iso'
+		case '.Imágenes ISO':
+			tipo= 'Imágenes ISO'
 			pass
-		case '.zip' | '.rar' | '.gzip':
-			tipo= 'comprimido'
+		case '.zip' | '.rar' | '.gzip' | '.tar' | '.gz' | '.tar.gz':
+			tipo= 'Comprimidos'
 			pass
 		case '.txt':
-			tipo= 'texto'
+			tipo= 'Textos planos'
 			pass
 		case '.mdb' | '.accdb' | '.sql':
-			tipo= 'basededatos'
+			tipo= 'Base de datos'
 			pass
 		case '.html' | '.htm' | '.php' | '.css' | '.js' | '.xml':
-			tipo= 'web'
+			tipo= 'Programación Web'
 			pass
 		case '.ttf' | '.opt':
-			tipo= 'fuente'
+			tipo= 'Fuentes'
 			pass
 		case '.dxf' | '.ifc' | '.rvt' | '.pln':
-			tipo= 'autocad'
+			tipo= 'Autocads'
 			pass
-		case '.dwg' | '.stl': #3d
-			tipo= '3d'
-		case _: #otros
-			tipo= 'otros'
+		case '.dwg' | '.stl': #Modelado 3ds
+			tipo= 'Modelado 3ds'
+		case _: #Otros
+			tipo= 'Otros'
 	#print(tipo, archivo)
 	crearSubCarpeta(tipo, archivo)
 			
 	
-
-			
 
 if os.path.exists( ruta ) :
 	#obtener listado de archivos
